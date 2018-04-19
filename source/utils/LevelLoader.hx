@@ -1,4 +1,4 @@
-package;
+package utils;
 
 import flixel.FlxState;
 import flixel.addons.editors.tiled.TiledMap;
