@@ -143,7 +143,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "10",
+			build: "13",
 			company: "HaxeFlixel",
 			file: "hf-template",
 			fps: 60,
@@ -161,7 +161,7 @@ class ApplicationMain {
 					display: 0,
 					fullscreen: false,
 					hardware: true,
-					height: 480,
+					height: 360,
 					parameters: "{}",
 					resizable: true,
 					stencilBuffer: true,
@@ -185,7 +185,7 @@ class ApplicationMain {
 		
 		#if (js && html5)
 		#if (munit || utest)
-		openfl.Lib.embed (null, 640, 480, "000000");
+		openfl.Lib.embed (null, 640, 360, "000000");
 		#end
 		#else
 		create ();

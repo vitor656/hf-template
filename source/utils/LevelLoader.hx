@@ -9,6 +9,7 @@ import flixel.tile.FlxTilemap;
 import flixel.addons.tile.FlxTilemapExt;
 import flixel.addons.editors.tiled.TiledObject;
 import flixel.FlxG;
+import states.PlayState;
 
 class LevelLoader 
 {

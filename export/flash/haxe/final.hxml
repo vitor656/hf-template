@@ -22,6 +22,6 @@
 -swf-lib export/flash/obj/assets.swf
 -swf-version 11.8
 -swf export/flash/bin/hf-template.swf
--swf-header 640:480:60:000000
+-swf-header 640:360:60:000000
 -cp export/flash/haxe
 -D final
