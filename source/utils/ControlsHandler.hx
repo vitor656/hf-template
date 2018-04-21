@@ -84,4 +84,12 @@ class ControlsHandler
         return false;
     }
 
+    public static function justpPressedFullscreen() : Bool
+    {
+        if(FlxG.keys.justPressed.F1)
+            return true;
+
+        return false;
+    }
+
 }
