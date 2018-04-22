@@ -143,7 +143,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "54",
+			build: "59",
 			company: "HaxeFlixel",
 			file: "hf-template",
 			fps: 60,
