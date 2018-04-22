@@ -10,6 +10,7 @@ import flixel.addons.tile.FlxTilemapExt;
 import flixel.addons.editors.tiled.TiledObject;
 import flixel.FlxG;
 import states.PlayState;
+import objects.Player;
 
 class LevelLoader 
 {
@@ -27,12 +28,12 @@ class LevelLoader
 	public inline static var LAYER_ENEMIES : String = "enemies";
 	public inline static var LAYER_COLLECTABLES : String = "collectables";
 
-	public static function setupLevel(state:PlayState, level:String){
+	public static function setupLevel(state:FlxState, level:String){
 		loadLevel(state, level);
 		spawnObjects(state, currentTiledMap);
 	}
 
-	public static function loadLevel(state:PlayState, level:String)
+	public static function loadLevel(state:FlxState, level:String)
 	{
 		currentLevel = level;
 		currentLevelPath = "assets/data/" + level + ".tmx";
@@ -89,26 +90,26 @@ class LevelLoader
 		
 	}
 	
-	public static function spawnObjects(state:PlayState, map:TiledMap) : Void
+	public static function spawnObjects(state:FlxState, map:TiledMap) : Void
 	{
 		spawnPlayer(state, map);
 		spawnEnemies(state, map);
 		spawnCollectables(state, map);
 	}
 
-	public static function spawnPlayer(state:PlayState, map:TiledMap) : Void
+	public static function spawnPlayer(state:FlxState, map:TiledMap) : Void
 	{
 		var arrPlayer = getLevelObjects(map, LAYER_PLAYER);
 		if(arrPlayer != null && arrPlayer.length > 0){
 			var playerObject : TiledObject = arrPlayer[0];
 
 			//Choose Player class to instantiate
-			// state.player = new Player(playerObject.x, playerObject.y);
-			// state.add(state.player);
+			(cast state).player = new Player(playerObject.x, playerObject.y);
+			state.add((cast state).player);
 		}
 	}
 
-	public static function spawnEnemies(state:PlayState, map:TiledMap) : Void
+	public static function spawnEnemies(state:FlxState, map:TiledMap) : Void
 	{
 		var arrEnemies : Array<TiledObject> = getLevelObjects(map, LAYER_ENEMIES);
 		if(arrEnemies != null && arrEnemies.length > 0){
@@ -125,7 +126,7 @@ class LevelLoader
 		}
 	}
 
-	public static function spawnCollectables(state:PlayState, map:TiledMap) : Void
+	public static function spawnCollectables(state:FlxState, map:TiledMap) : Void
 	{
 		var arrCollectables : Array<TiledObject> = getLevelObjects(map, LAYER_COLLECTABLES);
 		if(arrCollectables != null && arrCollectables.length > 0){

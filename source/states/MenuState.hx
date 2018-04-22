@@ -18,8 +18,11 @@ class MenuState extends FlxState
     {
         super.create();
 
-        _btnStart = new FlxButton(FlxG.width/2, FlxG.height/2, _menuEntries[0], resolveChoice.bind(0));
-        _btnExit = new FlxButton(FlxG.width/2, FlxG.height/2 + 30, _menuEntries[1], resolveChoice.bind(1));
+        _btnStart = new FlxButton(0, 0, _menuEntries[0], resolveChoice.bind(0));
+        _btnStart.screenCenter();
+        _btnExit = new FlxButton(0, 0, _menuEntries[1], resolveChoice.bind(1));
+        _btnExit.screenCenter();
+        _btnExit.y += 30;
 
         add(_btnStart);
         add(_btnExit);

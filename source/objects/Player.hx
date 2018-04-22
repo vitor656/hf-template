@@ -4,6 +4,8 @@ import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.util.FlxColor;
 import flixel.FlxG;
+import utils.ControlsHandler;
+import utils.LevelLoader;
 
 class Player extends FlxSprite 
 {
@@ -21,17 +23,17 @@ class Player extends FlxSprite
 	{
 		super.update(elapsed);
 		
-		if (FlxG.keys.pressed.W){
+		if (ControlsHandler.pressedUp()){
 			velocity.y = -SPEED;
-		} else if (FlxG.keys.pressed.S){
+		} else if (ControlsHandler.pressedDown()){
 			velocity.y = SPEED;
 		} else {
 			velocity.y = 0;
 		}
 		
-		if (FlxG.keys.pressed.D){
+		if (ControlsHandler.pressedRight()){
 			velocity.x = SPEED;
-		} else if (FlxG.keys.pressed.A) {
+		} else if (ControlsHandler.pressedLeft()) {
 			velocity.x = -SPEED;
 		} else {
 			velocity.x = 0;
