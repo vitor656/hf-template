@@ -11,21 +11,18 @@ import flixel.FlxG;
 class PlayGroundState extends FlxState
 {
     public var player : Player;
-    public var text : FlxTypeText;
+    public var _dialogue : Dialogue;
 
     override public function create():Void
     {
         super.create();
 
 		// LevelLoader.setupLevel(this, Reg.levels[Reg.currentLevelIndex]);
-        // add(Dialogue.instance);
-        // Dialogue.instance.startDialogue(this, "test");
 
-        // text = new FlxTypeText(0, 0, 100, "Hello World");
-        // text.screenCenter();
-        // add(text);
+        _dialogue = new Dialogue(new FlxTypeText(0, 0, 100, ""));
+        add(_dialogue);
+        _dialogue.startDialogue(this, "teste");
 
-        // text.start();
     }
 
     override public function update(elapsed:Float):Void
