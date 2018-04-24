@@ -19,9 +19,9 @@ class PlayGroundState extends FlxState
 
 		// LevelLoader.setupLevel(this, Reg.levels[Reg.currentLevelIndex]);
 
-        _dialogue = new Dialogue(new FlxTypeText(0, 0, 100, ""));
-        add(_dialogue);
-        _dialogue.startDialogue(this, "teste");
+        // _dialogue = new Dialogue(new FlxTypeText(0, 0, 100, ""));
+        // add(_dialogue);
+        // _dialogue.startDialogue(this, "teste");
 
     }
 
