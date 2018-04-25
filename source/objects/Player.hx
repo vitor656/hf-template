@@ -5,7 +5,7 @@ import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import utils.ControlsHandler;
-import utils.LevelLoader;
+import utils.TiledLevelLoader;
 
 class Player extends FlxSprite 
 {
@@ -15,7 +15,7 @@ class Player extends FlxSprite
 	{
 		super(X, Y);
 		
-		makeGraphic(16, 16, FlxColor.ORANGE);
+		makeGraphic(8, 8, FlxColor.ORANGE);
 	}
 	
 	override public function update(elapsed:Float):Void 
@@ -43,7 +43,7 @@ class Player extends FlxSprite
 
 	public function collisions()
 	{
-		FlxG.collide(this, LevelLoader.currentCollidableMap);
+		FlxG.collide(this, TiledLevelLoader.currentCollidableMap);
 	}
 	
 }

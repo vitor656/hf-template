@@ -61,6 +61,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_monsterrat_ttf);
 		
@@ -72,6 +73,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
+		className.set ("assets/data/level.csv", __ASSET__assets_data_level_csv);
+		type.set ("assets/data/level.csv", AssetType.TEXT);
 		className.set ("assets/data/level.tmx", __ASSET__assets_data_level_tmx);
 		type.set ("assets/data/level.tmx", AssetType.TEXT);
 		className.set ("assets/data/tiles.tsx", __ASSET__assets_data_tiles_tsx);
@@ -104,6 +107,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		var id;
 		id = "assets/data/data-goes-here.txt";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
+		id = "assets/data/level.csv";
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
@@ -179,6 +186,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
+		
+		className.set ("assets/data/level.csv", __ASSET__assets_data_level_csv);
+		type.set ("assets/data/level.csv", AssetType.TEXT);
 		
 		className.set ("assets/data/level.tmx", __ASSET__assets_data_level_tmx);
 		type.set ("assets/data/level.tmx", AssetType.TEXT);
@@ -864,6 +874,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if flash
 
 @:keep @:bind #if display private #end class __ASSET__assets_data_data_goes_here_txt extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__assets_data_level_csv extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_data_level_tmx extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_data_tiles_tsx extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_images_images_go_here_txt extends flash.utils.ByteArray { }
@@ -891,6 +902,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
 @:keep #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font { public function new () { super (); name = "Monsterrat"; } } 
 
@@ -905,6 +917,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 @:file("assets/data/data-goes-here.txt") #if display private #end class __ASSET__assets_data_data_goes_here_txt extends lime.utils.Bytes {}
+@:file("assets/data/level.csv") #if display private #end class __ASSET__assets_data_level_csv extends lime.utils.Bytes {}
 @:file("assets/data/level.tmx") #if display private #end class __ASSET__assets_data_level_tmx extends lime.utils.Bytes {}
 @:file("assets/data/tiles.tsx") #if display private #end class __ASSET__assets_data_tiles_tsx extends lime.utils.Bytes {}
 @:file("assets/images/images-go-here.txt") #if display private #end class __ASSET__assets_images_images_go_here_txt extends lime.utils.Bytes {}

@@ -34,6 +34,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
+		urls.push ("assets/data/level.csv");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
 		urls.push ("assets/data/level.tmx");
 		types.push (lime.Assets.AssetType.TEXT);
 		
@@ -147,7 +151,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "141",
+			build: "157",
 			company: "HaxeFlixel",
 			file: "hf-template",
 			fps: 60,
