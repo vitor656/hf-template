@@ -7,6 +7,10 @@ import utils.Dialogue;
 import utils.ControlsHandler;
 import flixel.addons.text.FlxTypeText;
 import flixel.FlxG;
+import flixel.tile.FlxTilemap;
+import utils.GroupsManager;
+import flixel.addons.display.FlxBackdrop;
+import flixel.graphics.FlxGraphic;
 
 class PlayGroundState extends FlxState
 {
@@ -17,11 +21,9 @@ class PlayGroundState extends FlxState
     {
         super.create();
 
-		// LevelLoader.setupLevel(this, Reg.levels[Reg.currentLevelIndex]);
+        add(GroupsManager.manager);
 
-        // _dialogue = new Dialogue(new FlxTypeText(0, 0, 100, ""));
-        // add(_dialogue);
-        // _dialogue.startDialogue(this, "teste");
+		LevelLoader.setupLevel(this, Reg.levels[Reg.currentLevelIndex]);
 
     }
 

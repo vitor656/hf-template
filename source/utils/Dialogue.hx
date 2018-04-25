@@ -7,6 +7,20 @@ import flixel.FlxState;
 import flixel.FlxBasic;
 import utils.ControlsHandler;
 
+/*
+
+How to use it:
+
+Declare a Dialogue variable in the Main State class and
+instantiate it passing an new FlxTypeText as parameter.
+
+Ex:
+_dialogue = new Dialogue(new FlxTypeText(0, 0, 100, ""));
+add(_dialogue);
+_dialogue.startDialogue(this, "teste");
+
+*/
+
 class Dialogue extends FlxBasic
 {
 

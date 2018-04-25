@@ -46,6 +46,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
+		urls.push ("assets/images/panorama.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/tiles_2.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -143,7 +147,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "123",
+			build: "141",
 			company: "HaxeFlixel",
 			file: "hf-template",
 			fps: 60,

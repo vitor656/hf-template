@@ -3,11 +3,38 @@ package utils;
 import flixel.FlxG;
 import flixel.group.FlxGroup;
 import flixel.group.FlxSpriteGroup;
+import flixel.FlxBasic;
 
-class GroupsManager
+class GroupsManager extends FlxBasic
 {
-    public static var playersGroup : FlxGroup = new FlxGroup();
-    public static var collidableMapGroup : FlxGroup = new FlxGroup();
-    public static var enemiesGroup : FlxGroup = new FlxGroup();
-    public static var entities : FlxGroup = new FlxGroup();
+    public static var manager(default, null) : GroupsManager = new GroupsManager();
+
+    public var playersGroup : FlxGroup;
+    public var collidableMapGroup : FlxGroup;
+    public var enemiesGroup : FlxGroup;
+    public var entities : FlxGroup;
+
+    public function new()
+    {
+        super();
+
+        playersGroup = new FlxGroup();
+        collidableMapGroup = new FlxGroup();
+        enemiesGroup = new FlxGroup();
+        entities = new FlxGroup();
+    }
+
+    override public function update(elapsed:Float):Void
+    {
+        super.update(elapsed);
+        
+        collisions();
+    }
+
+    private function collisions():Void
+    {
+        FlxG.collide(playersGroup, collidableMapGroup);
+    }
+
+
 }

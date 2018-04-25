@@ -55,7 +55,7 @@ class LevelLoader
 			1
 		);
 
-		GroupsManager.collidableMapGroup.add(currentCollidableMap);
+		GroupsManager.manager.collidableMapGroup.add(currentCollidableMap);
 		
 		var backgroundLayer : TiledTileLayer = cast tiledMap.getLayer(LAYER_BACKGROUND);
 		var backMap = new FlxTilemap();
@@ -108,6 +108,7 @@ class LevelLoader
 
 			//Choose Player class to instantiate
 			(cast state).player = new Player(playerObject.x, playerObject.y);
+			//GroupsManager.manager.playersGroup.add((cast state).player);
 			state.add((cast state).player);
 		}
 	}
