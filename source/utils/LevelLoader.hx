@@ -11,7 +11,10 @@ import flixel.addons.editors.tiled.TiledObject;
 import flixel.FlxG;
 import states.PlayState;
 import objects.Player;
+import utils.GroupsManager;
 
+
+// This class has to be used for Tiled based levels
 class LevelLoader 
 {
 
@@ -52,7 +55,7 @@ class LevelLoader
 			1
 		);
 
-		GroupsController.collidableMapGroup.add(currentCollidableMap);
+		GroupsManager.collidableMapGroup.add(currentCollidableMap);
 		
 		var backgroundLayer : TiledTileLayer = cast tiledMap.getLayer(LAYER_BACKGROUND);
 		var backMap = new FlxTilemap();

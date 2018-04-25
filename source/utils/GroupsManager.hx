@@ -1,10 +1,10 @@
-package;
+package utils;
 
 import flixel.FlxG;
 import flixel.group.FlxGroup;
 import flixel.group.FlxSpriteGroup;
 
-class GroupsController
+class GroupsManager
 {
     public static var playersGroup : FlxGroup = new FlxGroup();
     public static var collidableMapGroup : FlxGroup = new FlxGroup();

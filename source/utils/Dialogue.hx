@@ -21,6 +21,7 @@ class Dialogue extends FlxBasic
 
     private var isComplete : Bool;
     
+    // It has to receive the FlxTypeText object from the main state, it only works by that way.
     public function new(dialogueReceiver:FlxTypeText)
     {
         super();
@@ -67,11 +68,14 @@ class Dialogue extends FlxBasic
             if(state != null)
                 state.add(_typeText);
 
-            isComplete = false;
-            _typeText.resetText(currentMessage);
-            _typeText.start(DELAY_NORMAL, false, false, onCompleteClick);
+            if(_messages != null && _messages.length > 0){
+                isComplete = false;
+                _typeText.resetText(currentMessage);
+                _typeText.start(DELAY_NORMAL, false, false, onCompleteClick);
+            } else {
+                trace("No messages loaded...");
+            }
         }
-
     }
 
     // Load messages from some kind of file maybe?
