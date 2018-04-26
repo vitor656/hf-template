@@ -42,7 +42,19 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
+		urls.push ("assets/data/level2.csv");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/data/level2.tmx");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
 		urls.push ("assets/data/tiles.tsx");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/data/tiles8.tsx");
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
@@ -51,6 +63,10 @@ class ApplicationMain {
 		
 		
 		urls.push ("assets/images/panorama.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/tiles8.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -151,7 +167,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "157",
+			build: "183",
 			company: "HaxeFlixel",
 			file: "hf-template",
 			fps: 60,

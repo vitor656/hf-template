@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.group.FlxGroup;
 import flixel.group.FlxSpriteGroup;
 import flixel.FlxBasic;
+import flixel.FlxObject;
 
 class GroupsManager extends FlxBasic
 {
@@ -33,7 +34,7 @@ class GroupsManager extends FlxBasic
 
     private function collisions():Void
     {
-        FlxG.collide(playersGroup, collidableMapGroup);
+        FlxG.collide(playersGroup, enemiesGroup);
     }
 
 

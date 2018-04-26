@@ -13,6 +13,7 @@ import utils.GroupsManager;
 import flixel.addons.display.FlxBackdrop;
 import flixel.graphics.FlxGraphic;
 import flixel.util.FlxColor;
+import flixel.FlxCamera.FlxCameraFollowStyle;
 
 class PlayGroundState extends FlxState
 {
@@ -24,11 +25,14 @@ class PlayGroundState extends FlxState
     {
         super.create();
 
-        // add(GroupsManager.manager);
-		// TiledLevelLoader.setupLevel(this, Reg.levels[Reg.currentLevelIndex]);
-        LevelLoader.loadLevel(this, "level");
         FlxG.camera.bgColor = FlxColor.WHITE;
 
+        //add(GroupsManager.manager);
+		//TiledLevelLoader.setupLevel(this, Reg.levels[Reg.currentLevelIndex]);
+        LevelLoader.loadLevel(this, "level2");
+        add(player = new Player(100, 100));
+
+        FlxG.camera.follow(player, FlxCameraFollowStyle.SCREEN_BY_SCREEN);
     }
 
     override public function update(elapsed:Float):Void
