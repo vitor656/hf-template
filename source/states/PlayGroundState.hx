@@ -31,10 +31,6 @@ class PlayGroundState extends FlxState
         //add(GroupsManager.manager);
 		//TiledLevelLoader.setupLevel(this, Reg.levels[Reg.currentLevelIndex]);
 
-        backdrop = new FlxBackdrop(AssetPaths.panorama__png);
-        backdrop.scrollFactor.set(1,1);
-        add(backdrop);
-
         LevelLoader.loadLevel(this, "level2");
         add(player = new Player(100, 100));
 

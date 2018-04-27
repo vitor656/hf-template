@@ -1,6 +1,7 @@
 package utils;
 
 import flixel.FlxG;
+import flixel.input.gamepad.FlxGamepad;
 
 class ControlsHandler
 {
@@ -38,7 +39,7 @@ class ControlsHandler
 
     public static function justPressedJump() : Bool
     {
-        if(FlxG.keys.justPressed.SPACE)
+        if(FlxG.keys.anyJustPressed([SPACE, Z]))
             return true;
 
         return false;
@@ -46,7 +47,7 @@ class ControlsHandler
 
     public static function pressedJump() : Bool
     {
-        if(FlxG.keys.pressed.SPACE)
+        if(FlxG.keys.anyPressed([SPACE, Z]))
             return true;
 
         return false;
@@ -54,7 +55,7 @@ class ControlsHandler
 
     public static function releasedJump() : Bool
     {
-        if(FlxG.keys.justReleased.SPACE)
+        if(FlxG.keys.anyJustReleased([SPACE, Z]))
             return true;
 
         return false;
@@ -70,7 +71,7 @@ class ControlsHandler
 
     public static function justpPressedConfirm() : Bool
     {
-        if(FlxG.keys.anyJustPressed([SPACE, ENTER]))
+        if(FlxG.keys.anyJustPressed([SPACE, ENTER, Z]))
             return true;
 
         return false;
@@ -78,7 +79,7 @@ class ControlsHandler
     
     public static function justpPressedBack() : Bool
     {
-        if(FlxG.keys.anyJustPressed([ESCAPE]))
+        if(FlxG.keys.anyJustPressed([ESCAPE, X]))
             return true;
 
         return false;

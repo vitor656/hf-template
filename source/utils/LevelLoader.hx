@@ -13,8 +13,6 @@ class LevelLoader
 	public static var currentLevelPath : String;
     public static var currentCollidableMap : FlxTilemap;
 
-    public static var backdrop : FlxBackdrop;
-
     public static function loadLevel(state:FlxState, level:String):Void
     {
         currentLevel = level;
