@@ -4,14 +4,16 @@ import flixel.tile.FlxTilemap;
 import flixel.FlxState;
 import flixel.graphics.FlxGraphic;
 import utils.GroupsManager;
+import flixel.addons.display.FlxBackdrop;
 
 // LevelLoader to be used for non-Tiled based levels
 class LevelLoader
 {
     public static var currentLevel : String;
 	public static var currentLevelPath : String;
-
     public static var currentCollidableMap : FlxTilemap;
+
+    public static var backdrop : FlxBackdrop;
 
     public static function loadLevel(state:FlxState, level:String):Void
     {

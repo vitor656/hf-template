@@ -86,7 +86,7 @@ class ControlsHandler
 
     public static function justpPressedFullscreen() : Bool
     {
-        if(FlxG.keys.justPressed.F1)
+        if(FlxG.keys.pressed.ALT && FlxG.keys.justPressed.ENTER)
             return true;
 
         return false;

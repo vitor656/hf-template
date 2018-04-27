@@ -20,6 +20,7 @@ class PlayGroundState extends FlxState
     public var player : Player;
     public var _dialogue : Dialogue;
     public var _level : FlxTilemap;
+    public var backdrop : FlxBackdrop;
 
     override public function create():Void
     {
@@ -29,6 +30,11 @@ class PlayGroundState extends FlxState
 
         //add(GroupsManager.manager);
 		//TiledLevelLoader.setupLevel(this, Reg.levels[Reg.currentLevelIndex]);
+
+        backdrop = new FlxBackdrop(AssetPaths.panorama__png);
+        backdrop.scrollFactor.set(1,1);
+        add(backdrop);
+
         LevelLoader.loadLevel(this, "level2");
         add(player = new Player(100, 100));
 
