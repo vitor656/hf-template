@@ -5,7 +5,7 @@ import flixel.FlxG;
 import flixel.util.FlxTimer;
 import flixel.FlxState;
 import flixel.FlxBasic;
-import utils.ControlsHandler;
+import utils.ControlsManager;
 
 /*
 
@@ -47,7 +47,7 @@ class Dialogue extends FlxBasic
         super.update(elapsed);
         if(_typeText != null){  
             if(isComplete){
-                if(ControlsHandler.justpPressedConfirm())
+                if(ControlsManager.justpPressedConfirm())
                     loadNextmessage();
             } else {
                 if(FlxG.keys.pressed.SPACE)

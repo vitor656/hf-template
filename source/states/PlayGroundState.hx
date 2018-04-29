@@ -5,7 +5,7 @@ import utils.TiledLevelLoader;
 import utils.LevelLoader;
 import objects.Player;
 import utils.Dialogue;
-import utils.ControlsHandler;
+import utils.ControlsManager;
 import flixel.addons.text.FlxTypeText;
 import flixel.FlxG;
 import flixel.tile.FlxTilemap;
@@ -29,6 +29,7 @@ class PlayGroundState extends FlxState
         FlxG.camera.bgColor = FlxColor.WHITE;
 
         //add(GroupsManager.manager);
+        add(ControlsManager.manager);
 		//TiledLevelLoader.setupLevel(this, Reg.levels[Reg.currentLevelIndex]);
 
         LevelLoader.loadLevel(this, "level2");
@@ -41,7 +42,7 @@ class PlayGroundState extends FlxState
     {
         super.update(elapsed);
 
-        if(ControlsHandler.justpPressedFullscreen()) 
+        if(ControlsManager.justpPressedFullscreen()) 
             FlxG.fullscreen = !FlxG.fullscreen;
     }
 }

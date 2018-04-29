@@ -4,7 +4,7 @@ import flixel.FlxState;
 import flixel.ui.FlxButton;
 import flixel.FlxG;
 import flash.system.System;
-import utils.ControlsHandler;
+import utils.ControlsManager;
 
 class MenuState extends FlxState
 {
@@ -32,7 +32,7 @@ class MenuState extends FlxState
     {
         super.update(elapsed);
 
-        if(ControlsHandler.justpPressedFullscreen())
+        if(ControlsManager.justpPressedFullscreen())
             FlxG.fullscreen = !FlxG.fullscreen;
     }
 
