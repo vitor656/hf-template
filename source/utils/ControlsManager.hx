@@ -6,6 +6,8 @@ import flixel.FlxBasic;
 
 class ControlsManager extends FlxBasic
 {
+
+    // Add the manager to the state in order to use GamePad
     public static var manager(default, null) : ControlsManager = new ControlsManager();
 
     public static var gamepad : FlxGamepad;
