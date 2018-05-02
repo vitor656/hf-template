@@ -130,7 +130,7 @@ class ControlsManager extends FlxBasic
 
     public static function justpPressedFullscreen() : Bool
     {
-        if(FlxG.keys.pressed.ALT && FlxG.keys.justPressed.ENTER)
+        if(FlxG.keys.pressed.ALT && FlxG.keys.justReleased.ENTER)
             return true;
 
         return false;

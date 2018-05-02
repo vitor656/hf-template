@@ -13,11 +13,10 @@ import flixel.util.FlxColor;
 
 How to use it:
 
-Declare a Dialogue variable in the Main State class and
-instantiate it passing an new FlxTypeText as parameter.
+Declare a Dialogue variable in the Main State class 
 
 Ex:
-_dialogue = new Dialogue(new FlxTypeText(0, 0, 100, ""));
+_dialogue = new Dialogue();
 add(_dialogue);
 _dialogue.startDialogue(this, "teste");
 
@@ -28,9 +27,10 @@ class DialogueManager extends FlxBasic
 {
 
     public inline static var DELAY_NORMAL:Float = 0.1;
-    public inline static var DELAY_FAST:Float = 0.05;
+    public inline static var DELAY_FAST:Float = 0.02;
 
     public inline static var BOX_OFFSET:Int = 5;
+    public inline static var FONT_SIZE:Int = 8;
 
     public var _typeText : FlxTypeText;
     public var _messageBox : FlxSprite;
@@ -62,15 +62,15 @@ class DialogueManager extends FlxBasic
         }
     }
 
-    public function showMessage(messageReceiver:FlxTypeText)
+    public function loadDialogueReceiver(onBox:Bool)
     {
-        
-    }
+        if(onBox){
+            _typeText = new FlxTypeText(0, 0, Std.int(FlxG.width * 0.8) - (BOX_OFFSET * 2), "", FONT_SIZE, true);       
+        } else {
+            _typeText = new FlxTypeText(0, 0, Std.int(FlxG.width/2), "", FONT_SIZE, true);
+            _typeText.screenCenter();
+        }
 
-    public function loadDialogueReceiver()
-    {
-        
-        _typeText = new FlxTypeText(0, 0, Std.int(FlxG.width * 0.8) - (BOX_OFFSET * 2), "", 8, true);
         _typeText.skipKeys = [];
         _typeText.scrollFactor.set(0, 0);
 
@@ -79,7 +79,7 @@ class DialogueManager extends FlxBasic
     public function startDialogue(?state:FlxState, ?id:String, ?onBox:Bool = true)
     {
         if(_typeText == null){
-            loadDialogueReceiver();
+            loadDialogueReceiver(onBox);
         }
 
         if(id != null && id != ""){
@@ -89,6 +89,8 @@ class DialogueManager extends FlxBasic
         if(_typeText != null){
 
             if(onBox){
+
+                //Build dialogue box
                 _messageBox = new FlxSprite(0, 0);
                 _messageBox.makeGraphic(Std.int(FlxG.width * 0.8), Std.int(FlxG.height * 0.3), FlxColor.BLACK);
                 _messageBox.screenCenter();
