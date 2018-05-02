@@ -109,6 +109,15 @@ class ControlsManager extends FlxBasic
 
         return false;
     }
+
+    public static function pressedConfirm() : Bool
+    {
+        if(FlxG.keys.anyPressed([SPACE, ENTER, Z]) ||
+        (gamepad != null && gamepad.pressed.A))
+            return true;
+
+        return false;
+    }
     
     public static function justpPressedBack() : Bool
     {

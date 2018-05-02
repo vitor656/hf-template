@@ -6,7 +6,7 @@ import flixel.graphics.FlxGraphic;
 import utils.GroupsManager;
 import flixel.addons.display.FlxBackdrop;
 
-// LevelLoader to be used for non-Tiled based levels
+// LevelLoader to be used for CSV kind of files
 class LevelLoader
 {
     public static var currentLevel : String;

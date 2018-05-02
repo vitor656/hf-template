@@ -13,7 +13,7 @@ import states.PlayState;
 import objects.Player;
 import utils.GroupsManager;
 
-// This class has to be used for Tiled based levels
+// This class has to be used for Tiled based levels (.tmx)
 class TiledLevelLoader 
 {
 
@@ -41,50 +41,57 @@ class TiledLevelLoader
 		currentLevelPath = "assets/data/" + level + ".tmx";
 
 		var tiledMap = new TiledMap(currentLevelPath);
-		
-		var mainLayer : TiledTileLayer = cast tiledMap.getLayer(LAYER_MAIN);
-		currentCollidableMap = new FlxTilemap();
-		currentCollidableMap.loadMapFromArray(
-			mainLayer.tileArray, 
-			tiledMap.width, 
-			tiledMap.height, 
-			AssetPaths.tiles_2__png, 
-			16, 
-			16, 
-			1
-		);
 
-		GroupsManager.manager.collidableMapGroup.add(currentCollidableMap);
-		
-		var backgroundLayer : TiledTileLayer = cast tiledMap.getLayer(LAYER_BACKGROUND);
 		var backMap = new FlxTilemap();
-		backMap.loadMapFromArray(
-			backgroundLayer.tileArray, 
-			tiledMap.width, 
-			tiledMap.height, 
-			AssetPaths.tiles_2__png, 
-			16, 
-			16, 
-			1
-		);
-		backMap.solid = false;
+		var backgroundLayer : TiledTileLayer = cast tiledMap.getLayer(LAYER_BACKGROUND);
+		if(backgroundLayer != null){	
+			backMap.loadMapFromArray(
+				backgroundLayer.tileArray, 
+				tiledMap.width, 
+				tiledMap.height, 
+				AssetPaths.tiles_2__png, 
+				16, 
+				16, 
+				1
+			);
+			backMap.solid = false;
 
-		var foregroundLayer : TiledTileLayer = cast tiledMap.getLayer(LAYER_FOREGROUND);
-		var foreMap = new FlxTilemap();
-		foreMap.loadMapFromArray(
-			foregroundLayer.tileArray, 
-			tiledMap.width, 
-			tiledMap.height, 
-			AssetPaths.tiles_2__png, 
-			16, 
-			16, 
-			1
-		);
-		foreMap.solid = false;
+			state.add(backMap);
+		}
+
+	
+		var mainLayer : TiledTileLayer = cast tiledMap.getLayer(LAYER_MAIN);
+		if(mainLayer != null){
+			currentCollidableMap = new FlxTilemap();
+			currentCollidableMap.loadMapFromArray(
+				mainLayer.tileArray, 
+				tiledMap.width, 
+				tiledMap.height, 
+				AssetPaths.tiles_2__png, 
+				16, 
+				16, 
+				1
+			);
+			state.add(currentCollidableMap);
+		}
 		
-		state.add(backMap);
-		state.add(foreMap);
-		state.add(currentCollidableMap);
+		
+		var foreMap = new FlxTilemap();
+		var foregroundLayer : TiledTileLayer = cast tiledMap.getLayer(LAYER_FOREGROUND);
+		if(foregroundLayer != null){
+			foreMap.loadMapFromArray(
+				foregroundLayer.tileArray, 
+				tiledMap.width, 
+				tiledMap.height, 
+				AssetPaths.tiles_2__png, 
+				16, 
+				16, 
+				1
+			);
+			foreMap.solid = false;
+
+			state.add(foreMap);
+		}
 
 		FlxG.camera.setScrollBoundsRect(0, 0, tiledMap.fullWidth, tiledMap.fullHeight, true);
 

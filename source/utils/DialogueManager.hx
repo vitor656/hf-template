@@ -1,11 +1,13 @@
 package utils;
 
 import flixel.addons.text.FlxTypeText;
+import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.util.FlxTimer;
 import flixel.FlxState;
 import flixel.FlxBasic;
 import utils.ControlsManager;
+import flixel.util.FlxColor;
 
 /*
 
@@ -21,13 +23,17 @@ _dialogue.startDialogue(this, "teste");
 
 */
 
-class Dialogue extends FlxBasic
+// Add this manager to the current State to manage messages properly
+class DialogueManager extends FlxBasic
 {
 
     public inline static var DELAY_NORMAL:Float = 0.1;
     public inline static var DELAY_FAST:Float = 0.05;
 
+    public inline static var BOX_OFFSET:Int = 5;
+
     public var _typeText : FlxTypeText;
+    public var _messageBox : FlxSprite;
     private var _messages : Array<String>;
     private var _currentIndex : Int;
     private var currentMessage : String;
@@ -35,11 +41,9 @@ class Dialogue extends FlxBasic
 
     private var isComplete : Bool;
     
-    // It has to receive the FlxTypeText object from the main state, it only works by that way.
-    public function new(dialogueReceiver:FlxTypeText)
+    public function new()
     {
         super();
-        loadDialogueReceiver(dialogueReceiver);
     }
 
     override public function update(elapsed:Float):Void
@@ -50,7 +54,7 @@ class Dialogue extends FlxBasic
                 if(ControlsManager.justpPressedConfirm())
                     loadNextmessage();
             } else {
-                if(FlxG.keys.pressed.SPACE)
+                if(ControlsManager.pressedConfirm())
                     _typeText.delay = DELAY_FAST;
                 else
                     _typeText.delay = DELAY_NORMAL;
@@ -58,30 +62,50 @@ class Dialogue extends FlxBasic
         }
     }
 
-    public function loadDialogueReceiver(dialogueReceiver:FlxTypeText)
+    public function showMessage(messageReceiver:FlxTypeText)
     {
-        _typeText = dialogueReceiver;
-        setupDialogueReceiver();
+        
     }
 
-    private function setupDialogueReceiver():Void
+    public function loadDialogueReceiver()
     {
-        if(_typeText != null){
-            _typeText.skipKeys = [];
-            _typeText.scrollFactor.set(0, 0);
+        
+        _typeText = new FlxTypeText(0, 0, Std.int(FlxG.width * 0.8) - (BOX_OFFSET * 2), "", 8, true);
+        _typeText.skipKeys = [];
+        _typeText.scrollFactor.set(0, 0);
+
+    }
+
+    public function startDialogue(?state:FlxState, ?id:String, ?onBox:Bool = true)
+    {
+        if(_typeText == null){
+            loadDialogueReceiver();
         }
-    }
 
-    public function startDialogue(?state:FlxState, ?id:String)
-    {
         if(id != null && id != ""){
             loadDialogue(id);
         }
 
         if(_typeText != null){
-            if(state != null)
-                state.add(_typeText);
 
+            if(onBox){
+                _messageBox = new FlxSprite(0, 0);
+                _messageBox.makeGraphic(Std.int(FlxG.width * 0.8), Std.int(FlxG.height * 0.3), FlxColor.BLACK);
+                _messageBox.screenCenter();
+                _messageBox.y = (FlxG.height - _messageBox.height) - 10;
+                _messageBox.scrollFactor.set(0, 0);
+
+                _typeText.x = _messageBox.x + BOX_OFFSET;
+                _typeText.y = _messageBox.y + BOX_OFFSET;
+                _typeText.width = _messageBox.width - (BOX_OFFSET * 2);
+
+                state.add(_messageBox);
+            }
+
+            //Adiciona somente se carregou a lista de mensagens pela primeira vez
+            if(_currentIndex == 0)
+                state.add(_typeText);
+           
             if(_messages != null && _messages.length > 0){
                 isComplete = false;
                 _typeText.resetText(currentMessage);
@@ -92,6 +116,17 @@ class Dialogue extends FlxBasic
         }
     }
 
+    private function keepDialogueGoing()
+    {
+        if(_messages != null && _messages.length > 0){
+            isComplete = false;
+            _typeText.resetText(currentMessage);
+            _typeText.start(DELAY_NORMAL, false, false, onCompleteClick);
+        } else {
+            trace("No messages loaded...");
+        }
+    }
+
     // Load messages from some kind of file maybe?
     public function loadDialogue(id:String)
     {
@@ -99,9 +134,9 @@ class Dialogue extends FlxBasic
 
         switch(id){
             case "teste":
-                _messages.push("Mensagem 1 Mensagem 1 Mensagem 1");
-                _messages.push("Mensagem 2 Mensagem 2 Mensagem 2");
-                _messages.push("Mensagem 3 Mensagem 3 Mensagem 3");
+                _messages.push("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat lacus, sit amet bibendum velit. In hac habitasse platea dictumst. Fusce sed ultrices elit, non scelerisque mi.");
+                _messages.push("Mensagem 2 Mensagem 2 Mensagem 2 Mensagem 2 Mensagem 2 Mensagem 2");
+                _messages.push("Mensagem 3 Mensagem 3 Mensagem 3 Mensagem 3 Mensagem 3 Mensagem 3 Mensagem 3");
         }
 
         _currentIndex = 0;
@@ -128,9 +163,11 @@ class Dialogue extends FlxBasic
             _currentIndex++;
             if(_currentIndex < _messages.length){
                 currentMessage = _messages[_currentIndex];
-                startDialogue();
+                keepDialogueGoing();
             } else {
                 _typeText.destroy();
+                if(_messageBox != null)
+                    _messageBox.destroy();
             }
         }
     }

@@ -4,7 +4,7 @@ import flixel.FlxState;
 import utils.TiledLevelLoader;
 import utils.LevelLoader;
 import objects.Player;
-import utils.Dialogue;
+import utils.DialogueManager;
 import utils.ControlsManager;
 import flixel.addons.text.FlxTypeText;
 import flixel.FlxG;
@@ -18,7 +18,7 @@ import flixel.FlxCamera.FlxCameraFollowStyle;
 class PlayGroundState extends FlxState
 {
     public var player : Player;
-    public var _dialogue : Dialogue;
+    public var _dialogue : DialogueManager;
     public var _level : FlxTilemap;
     public var backdrop : FlxBackdrop;
 
@@ -26,8 +26,18 @@ class PlayGroundState extends FlxState
     {
         super.create();
 
+        FlxG.camera.bgColor = FlxColor.WHITE;
+
         //add(GroupsManager.manager);
 		//TiledLevelLoader.setupLevel(this, Reg.levels[Reg.currentLevelIndex]);
+        LevelLoader.loadLevel(this, "level2");
+        add(player = new Player(100, 100));
+
+        FlxG.camera.follow(player, SCREEN_BY_SCREEN);
+
+        add(_dialogue = new DialogueManager());
+        _dialogue.startDialogue(this, "teste");
+        
     }
 
     override public function update(elapsed:Float):Void
