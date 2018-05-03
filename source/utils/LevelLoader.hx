@@ -19,7 +19,8 @@ class LevelLoader
         currentLevelPath = "assets/data/" + level + ".csv";
 
         var _level = new FlxTilemap();
-		_level.loadMapFromCSV(currentLevelPath, FlxGraphic.fromClass(GraphicAuto), 8, 8, AUTO);
+		//_level.loadMapFromCSV(currentLevelPath, FlxGraphic.fromClass(GraphicAuto), 8, 8, AUTO);
+        _level.loadMapFromCSV(currentLevelPath, AssetPaths.autotiles__png, 8, 8, AUTO);
         currentCollidableMap = _level;
         GroupsManager.manager.collidableMapGroup.add(currentCollidableMap);
 		state.add(_level);
