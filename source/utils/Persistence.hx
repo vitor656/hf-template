@@ -8,7 +8,7 @@ class Persistence
     private inline static var SAVE_DATA : String = "HAXEFLIXELGAME";
     public static var save : FlxSave;
 
-    public static function saveScore() : Void
+    public static function saveScore()
     {
         save = new FlxSave();
 
@@ -21,7 +21,7 @@ class Persistence
         save.flush();
     }
 
-    public static function loadScore() : Void
+    public static function loadScore()
     {
         save = new FlxSave();
 		

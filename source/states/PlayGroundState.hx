@@ -26,7 +26,7 @@ class PlayGroundState extends FlxState
     {
         super.create();
 
-        //FlxG.camera.bgColor = FlxColor.CYAN;
+        FlxG.camera.bgColor = FlxColor.WHITE;
 
         //add(GroupsManager.manager);
 		//TiledLevelLoader.setupLevel(this, Reg.levels[Reg.currentLevelIndex]);

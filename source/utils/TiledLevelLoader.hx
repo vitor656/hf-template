@@ -4,12 +4,9 @@ import flixel.FlxState;
 import flixel.addons.editors.tiled.TiledMap;
 import flixel.addons.editors.tiled.TiledObjectLayer;
 import flixel.addons.editors.tiled.TiledTileLayer;
-import flixel.math.FlxPoint;
 import flixel.tile.FlxTilemap;
-import flixel.addons.tile.FlxTilemapExt;
 import flixel.addons.editors.tiled.TiledObject;
 import flixel.FlxG;
-import states.PlayState;
 import objects.Player;
 import utils.GroupsManager;
 
